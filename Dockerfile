@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
-LABEL maintainer="David Sn <divad.nnamtdeis@gmail.com>"
+FROM debian:bullseye
+LABEL maintainer="Rapherion Rollerscaperers <raphielscape@raphielgang.org>"
 
 ENV DEBIAN_FRONTEND=noninteractive \
     USER=docker \
@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     USE_CCACHE=1 \
     CCACHE_DIR=/tmp/ccache
 
-# Install required dependencies 
+# Install required dependencies
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         autoconf automake axel bc bison build-essential clang cmake expat flex g++ g++-multilib gawk gcc gcc-multilib \
@@ -23,10 +23,10 @@ RUN curl --create-dirs -L -o /usr/local/bin/repo -O -L https://github.com/akhiln
 
 # Create seperate build user
 RUN groupadd -g 1000 -r ${USER} && \
-    useradd -u 1000 --create-home -r -g ${USER} ${USER} && \
-    mkdir -p /tmp/ccache /repo && \
+    useradd -u 1000 --create-home -r -g ${USER} ${USER}
+RUN mkdir -p /tmp/ccache /repo && \
     chown -R ${USER}: /tmp/ccache /repo
-    
+
 # Allow sudo without password for build user
 RUN echo "${USER} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-docker-build && \
     usermod -aG sudo ${USER}
