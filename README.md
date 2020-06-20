@@ -1,8 +1,14 @@
-# docker-android-build
-A all-in-one Docker ready image to build Android locally. Requires Linux or macOS with Docker.
+# docker-buildcakes
+A all-in-one Docker ready image to build hentaiOS. Requires Linux or macOS with Docker.
 
 ### Deploying and running our container
 To create and run our container, we can use the following command syntax:
+
+```
+docker-compose -f "docker-compose.yml" up -d --build
+docker-compose exec build-hentai bash
+```
+Or
 ```
 docker run -it --name <container_name> --hostname <hostname> -v <local_repo>:/repo -v <local_ccache>:/tmp/ccache --rm divadsn/android-build:latest
 ```
