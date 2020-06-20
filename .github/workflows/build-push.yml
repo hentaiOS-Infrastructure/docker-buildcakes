@@ -1,0 +1,15 @@
+name: Build and Push Docker Image
+on: [push]
+
+jobs:
+  BuildPush:
+    name: Buildpush
+    runs-on: ubuntu-latest
+    steps:
+      - name: H
+        uses: docker/build-push-action@v1
+        with:
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
+            repository: hentaios/docker-buildcakes
+            tags: latest
