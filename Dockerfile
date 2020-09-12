@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # Install required dependencies
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
-        autoconf automake axel bc bison build-essential clang cmake expat flex g++ g++-multilib gawk gcc gcc-multilib \
+        autoconf automake axel bc bison build-essential ccache clang cmake expat flex g++ g++-multilib gawk gcc gcc-multilib \
         gnupg gperf htop imagemagick lib32ncurses5-dev lib32z1-dev libtinfo5 libc6-dev libcap-dev libexpat1-dev \
         libgmp-dev liblz4-* liblzma* libmpc-dev libmpfr-dev libncurses5-dev libsdl1.2-dev libssl-dev libtool libxml2 \
         libxml2-utils lzma* lzop maven ncftp ncurses-dev patch patchelf pkg-config pngcrush pngquant python python-all-dev \
