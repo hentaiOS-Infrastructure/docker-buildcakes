@@ -1,5 +1,5 @@
 DOCKER = docker
-IMAGE = divadsn/android-build
+IMAGE = hentaiOS-Infrastructure/docker-buildcakes
 TAG = $(shell git rev-parse --abbrev-ref HEAD)
 
 build: Dockerfile
