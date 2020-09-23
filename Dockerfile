@@ -18,8 +18,8 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install repo binary (thanks akheel)
-RUN curl --create-dirs -L -o /usr/local/bin/repo -O -L https://github.com/akhilnarang/repo/raw/master/repo && \
-    chmod a+x /usr/local/bin/repo
+RUN curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo && \
+    chmod a+rx /usr/local/bin/repo
 
 # Create seperate build user
 RUN groupadd -g 1000 -r ${USER} && \
