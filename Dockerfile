@@ -17,6 +17,10 @@ RUN apt-get update && \
         re2c schedtool squashfs-tools subversion texinfo unzip w3m xsltproc zip zlib1g-dev curl git sudo rsync openssl gnutls-bin libncurses5 bsdmainutils && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# HACK HACK HACK HACK
+# Symlink python3 to python to workaround repo breakage
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 # Install repo binary (thanks akheel)
 RUN curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo && \
     chmod a+rx /usr/local/bin/repo
