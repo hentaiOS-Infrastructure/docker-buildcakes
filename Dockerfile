@@ -8,7 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     CCACHE_DIR=/tmp/ccache
 
 # Install required dependencies
-RUN apt-get update && \
+RUN sed -r -i 's/^deb(.*)$/deb\1 contrib/g' /etc/apt/sources.list && \
+    apt-get update && \
     apt-get install --no-install-recommends -y \
         autoconf automake axel bc bison build-essential ccache clang cmake expat flex g++ g++-multilib gawk gcc gcc-multilib \
         gnupg gperf htop imagemagick lib32ncurses5-dev lib32z1-dev libtinfo5 libc6-dev libcap-dev libexpat1-dev \
