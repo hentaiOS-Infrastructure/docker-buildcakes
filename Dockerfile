@@ -14,16 +14,13 @@ RUN apt-get update && \
         gnupg gperf htop imagemagick lib32ncurses5-dev lib32z1-dev libtinfo5 libc6-dev libcap-dev libexpat1-dev \
         libgmp-dev liblz4-* liblzma* libmpc-dev libmpfr-dev libncurses5-dev libsdl1.2-dev libssl-dev libtool libxml2 \
         libxml2-utils lzma* lzop maven ncftp ncurses-dev patch patchelf pkg-config pngcrush pngquant python3 python-all-dev \
-        re2c schedtool squashfs-tools subversion texinfo unzip w3m xsltproc zip zlib1g-dev curl git sudo rsync openssl gnutls-bin libncurses5 bsdmainutils && \
+        re2c schedtool squashfs-tools subversion texinfo unzip w3m xsltproc zip zlib1g-dev curl git sudo rsync openssl \
+        gnutls-bin libncurses5 bsdmainutils repo && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # HACK HACK HACK HACK
 # Symlink python3 to python to workaround repo breakage
 RUN ln -s /usr/bin/python3 /usr/bin/python
-
-# Install repo binary (thanks akheel)
-RUN curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo && \
-    chmod a+rx /usr/local/bin/repo
 
 # Create seperate build user
 RUN groupadd -g 1000 -r ${USER} && \
