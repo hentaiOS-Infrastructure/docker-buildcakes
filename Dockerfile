@@ -45,4 +45,4 @@ RUN git config --global user.name ${USER} && git config --global user.email ${US
 WORKDIR /repo
 
 # This is where the magic happens~
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "-l", "-c"]
