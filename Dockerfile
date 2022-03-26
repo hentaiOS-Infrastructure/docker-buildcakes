@@ -11,12 +11,12 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN sed -r -i 's/^deb(.*)$/deb\1 contrib/g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install --no-install-recommends -y \
-        autoconf automake axel bc bison build-essential ccache clang cmake expat flex g++ g++-multilib gawk gcc gcc-multilib \
-        gnupg gperf htop imagemagick lib32ncurses5-dev lib32z1-dev libtinfo5 libc6-dev libcap-dev libexpat1-dev \
-        libgmp-dev liblz4-* liblzma* libmpc-dev libmpfr-dev libncurses5-dev libsdl1.2-dev libssl-dev libtool libxml2 \
-        libxml2-utils lzma* lzop maven ncftp ncurses-dev patch patchelf pkg-config pngcrush pngquant python3 python-all-dev \
-        re2c schedtool squashfs-tools subversion texinfo unzip w3m xsltproc zip zlib1g-dev curl git sudo rsync openssl \
-        gnutls-bin libncurses5 bsdmainutils repo && \
+    autoconf automake axel bc bison build-essential ccache clang cmake expat flex g++ g++-multilib gawk gcc gcc-multilib \
+    gnupg gperf htop imagemagick lib32ncurses5-dev lib32z1-dev libtinfo5 libc6-dev libcap-dev libexpat1-dev \
+    libgmp-dev liblz4-* liblzma* libmpc-dev libmpfr-dev libncurses5-dev libsdl1.2-dev libssl-dev libtool libxml2 \
+    libxml2-utils lzma* lzop maven ncftp ncurses-dev patch patchelf pkg-config pngcrush pngquant python3 python-all-dev \
+    re2c schedtool squashfs-tools subversion texinfo unzip w3m xsltproc zip zlib1g-dev curl git sudo rsync openssl \
+    gnutls-bin libncurses5 bsdmainutils repo && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # HACK HACK HACK HACK
@@ -25,7 +25,7 @@ RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # Create seperate build user
 RUN groupadd -g 999 -r ${USER} && \
-    useradd -u 999 --create-home -r -g ${USER} ${USER} --shell /bin/bash
+    useradd -u 999 --shell /bin/bash --create-home -r -g ${USER} ${USER}
 RUN mkdir -p /tmp/ccache /repo && \
     chown -R ${USER}: /tmp/ccache /repo
 
@@ -45,4 +45,4 @@ RUN git config --global user.name ${USER} && git config --global user.email ${US
 WORKDIR /repo
 
 # This is where the magic happens~
-ENTRYPOINT ["/bin/bash", "-l", "-c"]
+CMD ["bash"]
