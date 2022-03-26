@@ -24,8 +24,8 @@ RUN sed -r -i 's/^deb(.*)$/deb\1 contrib/g' /etc/apt/sources.list && \
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # Create seperate build user
-RUN groupadd -g 1000 -r ${USER} && \
-    useradd -u 1000 --create-home -r -g ${USER} ${USER}
+RUN groupadd -g 999 -r ${USER} && \
+    useradd -u 999 --create-home -r -g ${USER} ${USER} --shell /bin/bash
 RUN mkdir -p /tmp/ccache /repo && \
     chown -R ${USER}: /tmp/ccache /repo
 
