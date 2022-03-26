@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:testing-slim
 LABEL maintainer="Rapherion Rollerscaperers <raphielscape@raphielgang.org>"
 
 ENV DEBIAN_FRONTEND=noninteractive \
