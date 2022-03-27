@@ -2,8 +2,8 @@ FROM debian:testing-slim
 LABEL maintainer="Rapherion Rollerscaperers <raphielscape@raphielgang.org>"
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    USER=docker \
-    HOSTNAME=buildbot \
+    USER=android-build \
+    HOSTNAME=abponds \
     USE_CCACHE=1 \
     CCACHE_DIR=/tmp/ccache
 
@@ -16,7 +16,7 @@ RUN sed -r -i 's/^deb(.*)$/deb\1 contrib/g' /etc/apt/sources.list && \
     libgmp-dev liblz4-* liblzma* libmpc-dev libmpfr-dev libncurses5-dev libsdl1.2-dev libssl-dev libtool libxml2 \
     libxml2-utils lzma* lzop maven ncftp ncurses-dev patch patchelf pkg-config pngcrush pngquant python3 python-all-dev \
     re2c schedtool squashfs-tools subversion texinfo unzip w3m xsltproc zip zlib1g-dev curl git sudo rsync openssl \
-    gnutls-bin libncurses5 bsdmainutils repo && \
+    gnutls-bin libncurses5 bsdmainutils openssh-server repo && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # HACK HACK HACK HACK
